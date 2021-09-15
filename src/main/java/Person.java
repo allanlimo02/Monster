@@ -1,0 +1,43 @@
+import java.util.Objects;
+
+public class Person {
+    private String name;
+    private String email;
+
+    public Person(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object otherPerson){
+        if (!(otherPerson instanceof Person)) {
+            return false;
+        } else {
+            Person newPerson = (Person) otherPerson;
+            return this.getName().equals(newPerson.getName()) &&
+                    this.getEmail().equals(newPerson.getEmail());
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, email);
+    }
+}
